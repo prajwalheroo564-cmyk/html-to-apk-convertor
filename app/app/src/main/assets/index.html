@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <title>HTML TO APK CONVERTOR</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">H</span>
+      <span>HTML TO <b>APK</b></span>
+    </a>
+    <span class="version-tag">WEB BUILDER</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow"><span class="live-dot"></span> ANDROID APP WORKSPACE</div>
+      <h1>HTML to APK<br><span>Convertor</span></h1>
+      <p>Prepare your website project for Android.
+        Configure your app details and check your files.</p>
+      <div class="hero-tags">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <span>Android</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <span class="step-label">STEP 01</span>
+          <h2>App Configuration</h2>
+        </div>
+        <span class="number-icon">01</span>
+      </div>
+
+      <form id="appForm" novalidate>
+        <label for="appName">Application Name <span>*</span></label>
+        <input id="appName" type="text" maxlength="50"
+          placeholder="My Awesome App" required>
+        <small class="hint">The name shown under your app icon.</small>
+
+        <label for="packageName">Package Name <span>*</span></label>
+        <input id="packageName" type="text"
+          placeholder="com.example.myapp" required>
+        <small class="hint">Example: com.yourname.myapp</small>
+
+        <label for="websiteUrl">Website URL <span>*</span></label>
+        <input id="websiteUrl" type="url" inputmode="url"
+          placeholder="https://example.com" required>
+        <small class="hint">Use a publicly accessible HTTPS website.</small>
+
+        <div class="two-columns">
+          <div>
+            <label for="appVersion">App Version</label>
+            <input id="appVersion" type="text"
+              value="1.0.0" maxlength="20">
+          </div>
+          <div>
+            <label for="orientation">Orientation</label>
+            <select id="orientation">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+              <option value="unspecified">Unspecified</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Application Icon <span class="optional">(Optional)</span></label>
+        <div class="upload-box">
+          <input id="appIcon" type="file" accept="image/png,image/jpeg,image/webp">
+          <label for="appIcon" class="upload-label">
+            <span class="upload-symbol">↑</span>
+            <span id="iconFileName">Choose an icon image</span>
+            <small>PNG, JPG or WebP</small>
+          </label>
+          <img id="iconPreview" alt="App icon preview" hidden>
+        </div>
+
+        <label>Website Source <span class="optional">(Optional)</span></label>
+        <div class="source-options">
+          <label class="source-card">
+            <input type="radio" name="sourceType" value="url" checked>
+            <span class="source-symbol">↗</span>
+            <b>Website URL</b>
+            <small>Use the URL above</small>
+          </label>
+          <label class="source-card">
+            <input type="radio" name="sourceType" value="file">
+            <span class="source-symbol">⇧</span>
+            <b>HTML / ZIP</b>
+            <small>Choose local files</small>
+          </label>
+        </div>
+
+        <div id="fileArea" hidden>
+          <label for="sourceFile">HTML or ZIP file</label>
+          <input id="sourceFile" type="file"
+            accept=".html,.htm,.zip,text/html,application/zip">
+          <small class="hint">
+            ZIP projects should contain an index.html entry point.
+          </small>
+          <p id="sourceFileName" class="file-name">No file selected</p>
+        </div>
+
+        <button class="button button-secondary" type="button"
+          id="validateButton">Validate Configuration</button>
+
+        <div id="validationMessage" class="message" role="status"
+          aria-live="polite" hidden></div>
+
+        <button class="button button-primary" type="submit">
+          <span>Build APK</span><span aria-hidden="true">→</span>
+        </button>
+
+        <p class="build-note">
+          Build requests are not sent to a server in this frontend demo.
+        </p>
+      </form>
+    </section>
+
+    <section class="panel" id="buildPanel">
+      <div class="panel-heading">
+        <div>
+          <span class="step-label">STEP 02</span>
+          <h2>Build Status</h2>
+        </div>
+        <span class="status-pill" id="statusPill">NOT CONNECTED</span>
+      </div>
+
+      <div class="status-content">
+        <div class="status-icon">!</div>
+        <div>
+          <h3 id="statusTitle">Build service not connected</h3>
+          <p id="statusDescription">
+            This frontend cannot generate an APK by itself.
+            Connect a real Android build service before building.
+          </p>
+        </div>
+      </div>
+
+      <div class="status-details">
+        <div><span>Frontend</span><b class="available">Ready to test</b></div>
+        <div><span>Build backend</span><b>Not connected</b></div>
+        <div><span>APK download</span><b>Unavailable</b></div>
+      </div>
+
+      <button id="resetButton" type="button"
+        class="button button-secondary">Reset Form</button>
+    </section>
+
+    <section class="info-card">
+      <div class="info-icon">i</div>
+      <div>
+        <h3>Important information</h3>
+        <p>A hosted website URL and a local HTML project are different
+          inputs. A real build service must package the website, create
+          an Android app and return a genuine APK file. This page does
+          not claim to do that yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">HTML TO APK CONVERTOR</div>
+    <p>Made for Android creators.</p>
+    <p class="copyright">Frontend prototype · No fake APK generation</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
